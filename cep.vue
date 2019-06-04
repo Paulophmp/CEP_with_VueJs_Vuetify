@@ -18,7 +18,6 @@
                         fluid
                         grid-list-lg
                 >
-
                     <v-form
                             ref="form"
                             v-model="valid"
@@ -160,9 +159,6 @@
                     v => v.length >= 8 || 'Cep must be less than  8 characters'
                 ],
             }
-        },
-        created(){
-            this.notasAction()
         },
         computed: {
             ...mapGetters({
