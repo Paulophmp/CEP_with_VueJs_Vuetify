@@ -28,76 +28,13 @@
                             <v-layout>
                                 <v-flex
                                         xs12
-                                        md6
-                                >
-                                    <v-text-field
-                                            v-model="racaoSocial"
-                                            :rules="racaoRules"
-                                            :counter="50"
-                                            label="Ração Social"
-                                            required
-                                    ></v-text-field>
-                                </v-flex>
-
-                                <v-flex
-                                        xs12
-                                        md6
-                                >
-                                    <v-text-field
-                                            v-model="cnpj"
-                                            :rules="cnpjRules"
-                                            :mask="maskCnpj"
-                                            :counter="14"
-                                            label="CNPJ"
-                                            required
-                                    ></v-text-field>
-                                </v-flex>
-                            </v-layout>
-                            <v-layout>
-                                <v-flex
-                                        xs12
-                                        md6
-                                >
-                                    <v-combobox
-                                            v-model="search"
-                                            :items="items"
-                                            label="Tipo de ambiente"
-                                            chips
-                                            :rules="tipoRules"
-                                            required
-                                    >
-                                        <template
-                                                slot="selection"
-                                                slot-scope="data"
-                                        >
-                                            <v-chip
-                                                    :selected="data.selected"
-                                                    :disabled="data.disabled"
-                                                    :key="JSON.stringify(data.item)"
-                                                    class="v-chip--select-multi"
-                                                    @input="data.parent.selectItem(data.item)"
-                                            >
-                                                <v-avatar
-                                                        class="primary white--text"
-                                                        v-text="data.item.slice(0, 2).toUpperCase()"
-                                                />
-                                                {{ data.item }}
-                                            </v-chip>
-                                        </template>
-                                    </v-combobox>
-                                </v-flex>
-                            </v-layout>
-
-                            <v-layout>
-                                <v-flex
-                                        xs12
                                         md4
                                 >
                                     <v-text-field
                                             :counter="8"
                                             label="CEP"
                                             v-model="cep"
-                                            :mask="mask"
+                                            :mask="maskCEP"
                                             :rules="cepRules"
                                             @keyup="searchCep"
                                             @keydown="searchCep($event)"
@@ -206,14 +143,8 @@
     export default {
         data(){
             return {
-                items: [
-                    'Produção 1',
-                    'Homologação 2',
-                ],
-                mask: '##.###-###',
-                maskCnpj: '##.###.###/####-##',
+                maskCEP: '##.###-###',
                 valid: true,
-                racaoSocial: '',
                 cnpj: '',
                 search: '',
                 logradouro: '',
@@ -224,20 +155,9 @@
                 uf: '',
                 cep : '',
                 data : null,
-                racaoRules: [
-                    v => !!v || 'Ração Social is required',
-                    v => v.length >= 5 || 'Name must be less than 5 characters'
-                ],
-                cnpjRules: [
-                    v => !!v || 'Ração Social is required',
-                    v => v.length >= 14 || 'Name must be less than 14 characters'
-                ],
                 cepRules: [
                     v => !!v || 'Cep is required',
                     v => v.length >= 8 || 'Cep must be less than  8 characters'
-                ],
-                tipoRules: [
-                    v => !!v || 'Tipo de ambiente is required',
                 ],
             }
         },
@@ -263,7 +183,6 @@
             },
             searchCep () {
                 if(this.cep != null && this.cep.length == 8) {
-                    // axios.get(`https://viacep.com.br/ws/${ this.cep }/json/`)
                     axios.get(`https://viacep.com.br/ws/${ this.cep }/json/`)
                         .then( response => {
                             this.showResults (response.data)
@@ -282,8 +201,3 @@
         }
     }
 </script>
-
-<style>
-
-</style>
-<!--versão com o CEP via Axios-->
