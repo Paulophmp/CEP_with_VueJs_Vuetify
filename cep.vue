@@ -40,7 +40,6 @@
                                     ></v-text-field>
                                 </v-flex>
                             </v-layout>
-
                             <v-layout  v-if="cep != null && cep.length === 8">
                                 <v-flex
                                         xs12
