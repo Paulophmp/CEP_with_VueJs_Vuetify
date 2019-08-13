@@ -171,9 +171,6 @@
                     this.snackbar = true
                 }
             },
-            resetValidation () {
-                this.$refs.form.resetValidation()
-            },
             searchCep () {
                 if(this.cep != null && this.cep.length == 8) {
                     axios.get(`https://viacep.com.br/ws/${ this.cep }/json/`)
