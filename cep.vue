@@ -166,6 +166,11 @@
             ...mapActions({
                 notasAction: 'nota/notasAction',
             }),
+            submit () {
+                if (this.$refs.form.validate()) {
+                    this.snackbar = true
+                }
+            },
             resetValidation () {
                 this.$refs.form.resetValidation()
             },
