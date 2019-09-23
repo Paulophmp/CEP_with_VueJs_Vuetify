@@ -1,1 +1,1 @@
-Consulta de CEP utilizando VueJs.
+:zap:Consulta de CEP utilizando VueJs.
