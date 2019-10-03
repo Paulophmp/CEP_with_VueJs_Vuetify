@@ -152,8 +152,8 @@
                 cep : '',
                 data : null,
                 cepRules: [
-                    v => !!v || 'Cep is required',
-                    v => v.length >= 8 || 'Cep must be less than  8 characters'
+                    v => !!v || 'Cep é obrigatório',
+                    v => v.length >= 8 || 'Cep deve ter menos que 8 caracteres'
                 ],
             }
         },
