@@ -1,1 +1,1 @@
-Consulta de CEP utilizando VueJs.
+Consulta de CEP feito com VueJs e seu componente Vuetify.
